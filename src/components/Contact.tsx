@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import emailjs from 'emailjs-com'
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -16,8 +17,25 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    alert(`Merci ${formData.name}, votre message a été envoyé !`)
-    setFormData({ name: '', email: '', message: '' })
+
+    // Envoi via EmailJS   
+    emailjs.send(
+      "service_7xbrjl6",   
+      "template_kzwlbqg", 
+      {
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+      },
+      "Xva7Rj1kHWRyydrwb6DRe"      
+    )
+    .then(() => {
+      alert(`Merci ${formData.name}, votre message a été envoyé !`)
+      setFormData({ name: '', email: '', message: '' })
+    })
+    .catch(() => {
+      alert("Erreur lors de l'envoi du message.")
+    })
   }
 
   return (
@@ -86,11 +104,13 @@ const Contact = () => {
         </form>
 
         <div className="mt-10 text-center space-y-3">
-          <p className="text-gray-300">Email: <a className="underline hover:text-blue-400" href="mailto:contact@atelierdessin.com">contact@atelierdessin.com</a></p>
+          <p className="text-gray-300">
+            Email: <a className="underline hover:text-blue-400" href="mailto:contact@atelierdessin.com">yvovami@gmail.com</a>
+          </p>
           <div className="flex justify-center gap-6 text-sm">
-            <a href="https://www.instagram.com/freedyvo" target="_blank" rel="noreferrer" className="text-gray-300 hover:text-white">Instagram</a>
-            <a href="https://www.snapchat.com" target="_blank" rel="noreferrer" className="text-gray-300 hover:text-white">snapchat</a>
-            <a href="https://www.facebook.com" target="_blank" rel="noreferrer" className="text-gray-300 hover:text-white">facebook</a>
+            <a href="https://www.instagram.com/freedyvo?igsh=NmNlcXRwc2ZyOWhw&utm_source=qr" target="_blank" rel="noreferrer" className="text-gray-300 hover:text-white">Instagram</a>
+            <a href="https://www.snapchat.com/add/yvoreed?share_id=01oPr3DPRcuUH-tZxrtjLA&locale=en_CA" target="_blank" rel="noreferrer" className="text-gray-300 hover:text-white">snapchat</a>
+            <a href="https://www.facebook.com/share/1AeRPBLT2x/?mibextid=wwXIfr" target="_blank" rel="noreferrer" className="text-gray-300 hover:text-white">facebook</a>
           </div>
         </div>
       </div>
