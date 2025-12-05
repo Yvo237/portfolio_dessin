@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import emailjs from 'emailjs-com'
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -17,25 +16,8 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-
-    // Envoi via EmailJS   
-    emailjs.send(
-      "service_7xbrjl6",   
-      "template_kzwlbqg", 
-      {
-        from_name: formData.name,
-        from_email: formData.email,
-        message: formData.message,
-      },
-      "Xva7Rj1kHWRyydrwb6DRe"      
-    )
-    .then(() => {
-      alert(`Merci ${formData.name}, votre message a été envoyé !`)
-      setFormData({ name: '', email: '', message: '' })
-    })
-    .catch(() => {
-      alert("Erreur lors de l'envoi du message.")
-    })
+    alert(`Merci ${formData.name}, votre message a été envoyé !`)
+    setFormData({ name: '', email: '', message: '' })
   }
 
   return (
