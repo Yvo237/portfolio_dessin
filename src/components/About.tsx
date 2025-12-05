@@ -14,7 +14,7 @@ const About = () => {
           <div>
             <h2 className="text-3xl font-bold text-blue-600 mb-4">À propos</h2>
             <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-              Je suis un <strong>dessinateur à la main</strong> basé à [ta ville]. J’explore les textures, la lumière et le geste pour créer des images sensibles et vivantes.
+              Je suis un <strong>dessinateur à la main</strong> basé à Yaounde. J’explore les textures, la lumière et le geste pour créer des images sensibles et vivantes.
             </p>
 
             <div className="mt-6">
